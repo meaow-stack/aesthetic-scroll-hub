@@ -17,7 +17,7 @@ const Footer = () => {
     },
     {
       icon: Twitter,
-      href: "https://x.com/chainghoul_4,
+      href: "https://x.com/chainghoul_4",
       label: "Twitter",
       color: "hover:text-cyan-400"
     },
