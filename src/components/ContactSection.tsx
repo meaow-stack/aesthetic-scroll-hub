@@ -71,7 +71,7 @@ const ContactSection = () => {
                     </div>
                     <div>
                       <p className="font-semibold">Email</p>
-                      <p className="text-muted-foreground">alex.thompson@email.com</p>
+                      <p className="text-muted-foreground">sayantanmukherjee000@gmail.com</p>
                     </div>
                   </motion.div>
 
@@ -84,8 +84,12 @@ const ContactSection = () => {
                       <Phone className="h-6 w-6 text-primary" />
                     </div>
                     <div>
-                      <p className="font-semibold">Phone</p>
-                      <p className="text-muted-foreground">+1 (555) 123-4567</p>
+                      <p className="font-semibold">GitHub</p>
+                      <p className="text-muted-foreground">
+                        <a href="https://github.com/meaow-stack" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors">
+                          github.com/meaow-stack
+                        </a>
+                      </p>
                     </div>
                   </motion.div>
 
@@ -99,7 +103,7 @@ const ContactSection = () => {
                     </div>
                     <div>
                       <p className="font-semibold">Location</p>
-                      <p className="text-muted-foreground">San Francisco, CA</p>
+                      <p className="text-muted-foreground">Asansol, West Bengal, India</p>
                     </div>
                   </motion.div>
                 </div>
@@ -112,19 +116,19 @@ const ContactSection = () => {
                 <ul className="space-y-3 text-muted-foreground">
                   <li className="flex items-start">
                     <span className="w-2 h-2 bg-primary rounded-full mt-2 mr-3 flex-shrink-0"></span>
-                    <span>5+ years of full-stack development experience</span>
+                    <span>Currently pursuing engineering degree</span>
                   </li>
                   <li className="flex items-start">
                     <span className="w-2 h-2 bg-primary rounded-full mt-2 mr-3 flex-shrink-0"></span>
-                    <span>Expertise in modern web technologies and AI</span>
+                    <span>Expertise in AI/ML and full-stack development</span>
                   </li>
                   <li className="flex items-start">
                     <span className="w-2 h-2 bg-primary rounded-full mt-2 mr-3 flex-shrink-0"></span>
-                    <span>Commitment to clean, scalable code</span>
+                    <span>90%+ accuracy in ML model implementations</span>
                   </li>
                   <li className="flex items-start">
                     <span className="w-2 h-2 bg-primary rounded-full mt-2 mr-3 flex-shrink-0"></span>
-                    <span>Strong focus on user experience and performance</span>
+                    <span>Strong focus on real-world problem solving</span>
                   </li>
                 </ul>
               </CardContent>

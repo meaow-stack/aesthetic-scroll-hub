@@ -36,7 +36,7 @@ const HeroSection = () => {
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 1, delay: 0.2 }}
           >
-            Alex Thompson
+            Sayantan Mukherjee
           </motion.h1>
           
           <motion.p 
@@ -45,7 +45,7 @@ const HeroSection = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
           >
-            Full Stack Developer | AI Enthusiast | Designer
+            Full Stack Developer | ML Engineer | Student
           </motion.p>
           
           <motion.div 

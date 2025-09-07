@@ -34,7 +34,7 @@ const AboutSection = () => {
               <div className="absolute inset-0 bg-gradient-primary rounded-full opacity-20 blur-xl animate-pulse"></div>
               <img
                 src={profilePhoto}
-                alt="Alex Thompson - Full Stack Developer"
+                alt="Sayantan Mukherjee - Full Stack Developer"
                 className="relative z-10 w-full h-full object-cover rounded-full border-4 border-primary glow transition-transform duration-300 hover:scale-105"
               />
             </div>
@@ -52,23 +52,24 @@ const AboutSection = () => {
               <CardContent className="p-8">
                 <h3 className="text-2xl font-bold mb-4 text-primary">My Story</h3>
                 <p className="text-lg text-muted-foreground leading-relaxed mb-6">
-                  With over 5 years of experience in full-stack development, I specialize in creating 
-                  scalable web applications using cutting-edge technologies. My passion lies in solving 
-                  complex problems and turning innovative ideas into reality.
+                  Currently pursuing my degree at Asansol Engineering College, I'm passionate about 
+                  full-stack development and machine learning. I completed my Class 12th from St. Patrick's 
+                  Higher Secondary School and Class 10th from St. Vincent's High and Technical School, 
+                  both prestigious institutions in eastern India.
                 </p>
                 
                 <h3 className="text-2xl font-bold mb-4 text-primary">What I Do</h3>
                 <p className="text-lg text-muted-foreground leading-relaxed mb-6">
-                  I build end-to-end solutions using React, TypeScript, Python, and Django. Currently 
-                  exploring the fascinating world of AI and machine learning to create intelligent, 
-                  user-centric applications that make a difference.
+                  I build end-to-end solutions using React, Django, Python, and modern web technologies. 
+                  My focus is on AI/ML applications, particularly in healthcare and agriculture, creating 
+                  intelligent systems that solve real-world problems with high accuracy and user-friendly interfaces.
                 </p>
 
                 <h3 className="text-2xl font-bold mb-4 text-primary">My Mission</h3>
                 <p className="text-lg text-muted-foreground leading-relaxed">
-                  To create technology that not only works flawlessly but also provides exceptional 
-                  user experiences. I believe in writing clean, maintainable code and staying updated 
-                  with the latest industry trends and best practices.
+                  To leverage technology and machine learning to create impactful solutions that improve 
+                  lives. I believe in continuous learning, clean code practices, and building applications 
+                  that are both technically robust and user-centric.
                 </p>
               </CardContent>
             </Card>

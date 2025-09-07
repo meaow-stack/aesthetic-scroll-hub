@@ -14,50 +14,50 @@ import {
 const skills = [
   {
     icon: Code2,
-    title: "Frontend Development",
-    description: "React, TypeScript, Next.js, Tailwind CSS",
+    title: "Programming Languages",
+    description: "Python, C, JavaScript",
     color: "text-blue-400"
   },
   {
     icon: Server,
-    title: "Backend Development", 
-    description: "Python, Django, Node.js, REST APIs",
+    title: "Web Development", 
+    description: "Django, React.js, Node.js, Next.js, REST APIs",
     color: "text-green-400"
   },
   {
     icon: Database,
-    title: "Database Management",
-    description: "PostgreSQL, MongoDB, Redis, Supabase",
+    title: "Database & Tools",
+    description: "SQL, SQLite, Git, GitHub",
     color: "text-purple-400"
   },
   {
     icon: Brain,
-    title: "AI & Machine Learning",
-    description: "TensorFlow, PyTorch, Scikit-learn, OpenAI",
+    title: "Machine Learning",
+    description: "NLP, TensorFlow, HuggingFace BERT, Scikit-Learn",
     color: "text-pink-400"
   },
   {
-    icon: Smartphone,
-    title: "Mobile Development",
-    description: "React Native, Flutter, PWAs",
+    icon: Palette,
+    title: "Frontend Styling",
+    description: "Bootstrap, Tailwind CSS, Responsive Design",
     color: "text-orange-400"
   },
   {
     icon: Globe,
-    title: "Web Technologies",
-    description: "HTML5, CSS3, JavaScript, WebGL",
+    title: "Core Concepts",
+    description: "OOP, Data Structures & Algorithms, Computer Networks",
     color: "text-cyan-400"
   },
   {
-    icon: Palette,
-    title: "UI/UX Design",
-    description: "Figma, Adobe XD, Design Systems",
+    icon: Server,
+    title: "AI Specialization",
+    description: "Reinforcement Learning, Model Training & Tuning",
     color: "text-red-400"
   },
   {
     icon: GitBranch,
-    title: "DevOps & Tools",
-    description: "Git, Docker, AWS, CI/CD, Linux",
+    title: "Development Tools",
+    description: "Streamlit, Pandas, Matplotlib, EDA",
     color: "text-yellow-400"
   }
 ];

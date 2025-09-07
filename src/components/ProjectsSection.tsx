@@ -8,30 +8,30 @@ import project3 from "@/assets/project-3.jpg";
 
 const projects = [
   {
-    title: "AI-Powered Dashboard",
-    description: "A comprehensive analytics dashboard with machine learning insights and real-time data visualization. Built with React, TypeScript, and Python backend.",
+    title: "AI-Powered Health Symptom Checker",
+    description: "Full-stack application predicting symptoms using NLP and wearable data. Used BERT (HuggingFace) for symptom extraction from user input, integrated real-time health monitoring API with 90% model accuracy, and developed interactive chatbot for diagnostics.",
     image: project1,
-    technologies: ["React", "TypeScript", "Python", "TensorFlow", "PostgreSQL"],
-    github: "https://github.com/alexthompson/ai-dashboard",
-    live: "https://ai-dashboard.alexthompson.dev",
+    technologies: ["Next.js", "Tailwind", "TensorFlow", "HuggingFace BERT", "NLP"],
+    github: "https://github.com/meaow-stack/health-symptom-checker",
+    live: "#",
     featured: true
   },
   {
-    title: "Smart Mobile App",
-    description: "Cross-platform mobile application with AI-driven features for personalized user experiences. Includes offline capabilities and cloud sync.",
+    title: "Crop Prediction System",
+    description: "ML project predicting optimal crops based on soil & weather data. Trained Random Forest & SVM models achieving 90%+ accuracy, used EDA and visualizations to analyze feature impact, and applied hyperparameter tuning for performance optimization.",
     image: project2,
-    technologies: ["React Native", "Node.js", "MongoDB", "OpenAI API"],
-    github: "https://github.com/alexthompson/smart-mobile-app",
-    live: "https://apps.apple.com/app/smart-mobile-app",
+    technologies: ["Python", "Scikit-Learn", "Pandas", "Matplotlib", "Streamlit", "React.js"],
+    github: "https://github.com/meaow-stack/crop-prediction",
+    live: "#",
     featured: true
   },
   {
-    title: "E-Commerce Platform",
-    description: "Full-stack e-commerce solution with advanced features like inventory management, payment processing, and analytics dashboard.",
+    title: "E-Commerce Website (Amazon Clone)",
+    description: "Responsive e-commerce platform with real-time cart & search functionality. Built secure login, payment system, and admin dashboard. Developed REST APIs with Django consumed via dynamic frontend with separate admin and customer interfaces.",
     image: project3,
-    technologies: ["Next.js", "Django", "Stripe", "Redis", "AWS"],
-    github: "https://github.com/alexthompson/ecommerce-platform",
-    live: "https://ecommerce.alexthompson.dev",
+    technologies: ["Django", "HTML", "SQLite", "Bootstrap", "REST APIs"],
+    github: "https://github.com/meaow-stack/ecommerce-clone",
+    live: "#",
     featured: false
   }
 ];
@@ -151,7 +151,7 @@ const ProjectsSection = () => {
             className="px-8 py-6 text-lg border-primary text-primary hover:bg-primary hover:text-primary-foreground transition-all duration-300"
             asChild
           >
-            <a href="https://github.com/alexthompson" target="_blank" rel="noopener noreferrer">
+            <a href="https://github.com/meaow-stack" target="_blank" rel="noopener noreferrer">
               <Github className="mr-2 h-5 w-5" />
               View All Projects on GitHub
             </a>

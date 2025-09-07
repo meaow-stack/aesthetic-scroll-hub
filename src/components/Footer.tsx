@@ -5,25 +5,25 @@ const Footer = () => {
   const socialLinks = [
     {
       icon: Github,
-      href: "https://github.com/alexthompson",
+      href: "https://github.com/meaow-stack",
       label: "GitHub",
       color: "hover:text-gray-400"
     },
     {
       icon: Linkedin,
-      href: "https://linkedin.com/in/alexthompson",
+      href: "https://linkedin.com/in/sayantanmukherjee",
       label: "LinkedIn", 
       color: "hover:text-blue-400"
     },
     {
       icon: Twitter,
-      href: "https://twitter.com/alexthompson",
+      href: "https://twitter.com/sayantanmukherjee",
       label: "Twitter",
       color: "hover:text-cyan-400"
     },
     {
       icon: Mail,
-      href: "mailto:alex.thompson@email.com",
+      href: "mailto:sayantanmukherjee000@gmail.com",
       label: "Email",
       color: "hover:text-green-400"
     }
@@ -92,7 +92,7 @@ const Footer = () => {
             viewport={{ once: true }}
             className="flex items-center justify-center space-x-2 text-sm text-muted-foreground"
           >
-            <span>© 2024 Alex Thompson. Made with</span>
+            <span>© 2024 Sayantan Mukherjee. Made with</span>
             <motion.div
               animate={{ 
                 scale: [1, 1.2, 1],
