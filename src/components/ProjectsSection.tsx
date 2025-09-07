@@ -21,10 +21,11 @@ const projects = [
     description: "ML project predicting optimal crops based on soil & weather data. Trained Random Forest & SVM models achieving 90%+ accuracy, used EDA and visualizations to analyze feature impact, and applied hyperparameter tuning for performance optimization.",
     image: project2,
     technologies: ["Python", "Scikit-Learn", "Pandas", "Matplotlib", "Streamlit", "React.js"],
-    github: https://github.com/meaow-stack/Agriculture",
+    github: "https://github.com/meaow-stack/Agriculture",
     live: "#",
     featured: true
   },
+
   {
     title: "E-Commerce Website (Amazon Clone)",
     description: "Responsive e-commerce platform with real-time cart & search functionality. Built secure login, payment system, and admin dashboard. Developed REST APIs with Django consumed via dynamic frontend with separate admin and customer interfaces.",
