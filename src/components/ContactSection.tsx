@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
-import { Mail, Phone, MapPin, Send } from "lucide-react";
+import { Mail, Github, MapPin, Send } from "lucide-react";
 import { useState } from "react";
 import { toast } from "sonner";
 
@@ -81,7 +81,7 @@ const ContactSection = () => {
                     transition={{ duration: 0.3 }}
                   >
                     <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center group-hover:bg-primary/20 transition-colors duration-300">
-                      <Phone className="h-6 w-6 text-primary" />
+                      <Github className="h-6 w-6 text-primary" />
                     </div>
                     <div>
                       <p className="font-semibold">GitHub</p>
