@@ -11,13 +11,13 @@ const Footer = () => {
     },
     {
       icon: Linkedin,
-      href: "https://linkedin.com/in/sayantanmukherjee",
+      href: "https://www.linkedin.com/in/sayantan-mukherjee-5a4b46293/",
       label: "LinkedIn", 
       color: "hover:text-blue-400"
     },
     {
       icon: Twitter,
-      href: "https://twitter.com/sayantanmukherjee",
+      href: "https://x.com/chainghoul_4,
       label: "Twitter",
       color: "hover:text-cyan-400"
     },
