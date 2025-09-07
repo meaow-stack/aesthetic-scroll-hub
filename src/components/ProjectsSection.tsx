@@ -12,7 +12,7 @@ const projects = [
     description: "Full-stack application predicting symptoms using NLP and wearable data. Used BERT (HuggingFace) for symptom extraction from user input, integrated real-time health monitoring API with 90% model accuracy, and developed interactive chatbot for diagnostics.",
     image: project1,
     technologies: ["Next.js", "Tailwind", "TensorFlow", "HuggingFace BERT", "NLP"],
-    github: "https://github.com/meaow-stack/health-symptom-checker",
+    github: "hhttps://github.com/meaow-stack/health_checker-",
     live: "#",
     featured: true
   },
@@ -21,7 +21,7 @@ const projects = [
     description: "ML project predicting optimal crops based on soil & weather data. Trained Random Forest & SVM models achieving 90%+ accuracy, used EDA and visualizations to analyze feature impact, and applied hyperparameter tuning for performance optimization.",
     image: project2,
     technologies: ["Python", "Scikit-Learn", "Pandas", "Matplotlib", "Streamlit", "React.js"],
-    github: "https://github.com/meaow-stack/crop-prediction",
+    github: https://github.com/meaow-stack/Agriculture",
     live: "#",
     featured: true
   },
@@ -30,7 +30,7 @@ const projects = [
     description: "Responsive e-commerce platform with real-time cart & search functionality. Built secure login, payment system, and admin dashboard. Developed REST APIs with Django consumed via dynamic frontend with separate admin and customer interfaces.",
     image: project3,
     technologies: ["Django", "HTML", "SQLite", "Bootstrap", "REST APIs"],
-    github: "https://github.com/meaow-stack/ecommerce-clone",
+    github: "https://github.com/meaow-stack/amazon",
     live: "#",
     featured: false
   }
