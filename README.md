@@ -1,63 +1,97 @@
-# Welcome to your Lovable project
+# 🌐 Personal Portfolio Website
 
-## Project info
+[![Netlify Status](https://api.netlify.com/api/v1/badges/YOUR_NETLIFY_BADGE/deploy-status)](https://app.netlify.com/sites/sayantannnmukherjee225/deploys)
 
-**URL**: https://sayantannnmukherjee225.netlify.app/
+A modern and responsive portfolio website built with **React, TypeScript, Vite, Tailwind CSS, and shadcn-ui**.  
+Deployed seamlessly with [Netlify](https://www.netlify.com/).
 
-## How can I edit this code?
+---
 
-There are several ways of editing your application.
+## 🔗 Live Demo
+👉 [View Website](https://sayantannnmukherjee225.netlify.app/)
 
-Changes made via Lovable will be committed automatically to this repo.
+---
 
-**Use your preferred IDE**
+## 📦 Tech Stack
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+- ⚡ [Vite](https://vitejs.dev/) – Next-generation build tool  
+- ⚛️ [React](https://react.dev/) – Frontend library  
+- 📘 [TypeScript](https://www.typescriptlang.org/) – Static typing for JavaScript  
+- 🎨 [Tailwind CSS](https://tailwindcss.com/) – Utility-first styling  
+- 🧩 [shadcn-ui](https://ui.shadcn.com/) – UI components  
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+---
 
-Follow these steps:
+## 🛠️ Getting Started
 
+### 1️⃣ Clone the Repository
 ```sh
-# Step 1: Clone the repository using the project's Git URL.
 git clone <YOUR_GIT_URL>
-
-# Step 2: Navigate to the project directory.
 cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
+2️⃣ Install Dependencies
+npm install
+3️⃣ Start Development Server
 npm run dev
-```
 
-**Edit a file directly in GitHub**
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+Runs the app locally with hot reloading at http://localhost:5173
+.
+Editing the Code
+Option 1: Local Development
 
-**Use GitHub Codespaces**
+Open the project in your preferred IDE (e.g., VS Code).
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+Make changes and commit them.
 
-## What technologies are used for this project?
+Push to GitHub → Netlify will automatically deploy.
 
-This project is built with:
+Option 2: Edit on GitHub
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+Open the file in your repository.
 
-## How can I deploy this project?
+Click the ✏️ edit icon, make changes, and commit.
 
-NETLIFY
+Option 3: GitHub Codespaces
+
+Launch a Codespace directly from GitHub.
+
+Edit files in-browser and commit changes.
+
+🌍 Deployment (Netlify)
+
+Go to Netlify
+.
+
+Click New Site from Git.
+
+Connect your GitHub repository.
+
+Configure build settings:
+
+Build command:
+
+npm run build
+
+
+Publish directory:
+
+dist
+
+
+Deploy 🚀
+
+All future pushes to main will trigger an automatic deployment.
+
+🤝 Contributing
+
+Contributions are welcome!
+
+Fork the repo & create a new branch.
+
+Commit changes and open a pull request.
+
+📜 License
+
+This project is licensed under the MIT License – free to use and modify.
 
 
