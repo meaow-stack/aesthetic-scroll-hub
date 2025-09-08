@@ -12,7 +12,7 @@ const projects = [
     description: "Full-stack application predicting symptoms using NLP and wearable data. Used BERT (HuggingFace) for symptom extraction from user input, integrated real-time health monitoring API with 90% model accuracy, and developed interactive chatbot for diagnostics.",
     image: project1,
     technologies: ["Next.js", "Tailwind", "TensorFlow", "HuggingFace BERT", "NLP"],
-    github: "hhttps://github.com/meaow-stack/health_checker-",
+    github: "https://github.com/meaow-stack/health_checker-",
     live: "#",
     featured: true
   },
