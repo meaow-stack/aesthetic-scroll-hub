@@ -12,7 +12,7 @@ const Footer = () => {
     {
       icon: Linkedin,
       href: "https://www.linkedin.com/in/sayantan-mukherjee-5a4b46293/",
-      label: "LinkedIn", 
+      label: "LinkedIn",
       color: "hover:text-blue-400"
     },
     {
@@ -30,29 +30,29 @@ const Footer = () => {
   ];
 
   return (
-    <footer className="py-12 px-6 border-t border-primary/20">
+    <footer className="py-8 px-6 border-t border-primary/20">
       <div className="max-w-6xl mx-auto">
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
-          className="text-center space-y-8"
+          className="text-center space-y-6"
         >
           {/* Social Links */}
-          <div className="flex justify-center space-x-6">
+          <div className="flex justify-center space-x-5">
             {socialLinks.map((link, index) => (
               <motion.a
                 key={link.label}
                 href={link.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className={`w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center text-muted-foreground ${link.color} transition-all duration-300 hover:bg-primary/20 hover:scale-110`}
-                initial={{ opacity: 0, y: 20 }}
+                className={`w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center text-muted-foreground ${link.color} transition-all duration-300 hover:bg-primary/20 hover:scale-110`}
+                initial={{ opacity: 0, y: 15 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 viewport={{ once: true }}
-                whileHover={{ 
+                whileHover={{
                   scale: 1.1,
                   rotate: 5,
                   transition: { duration: 0.3 }
@@ -69,9 +69,9 @@ const Footer = () => {
           <motion.nav
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
+            transition={{ duration: 0.8, delay: 0.3 }}
             viewport={{ once: true }}
-            className="flex justify-center space-x-8 text-sm"
+            className="flex justify-center space-x-6 text-sm"
           >
             {['About', 'Skills', 'Projects', 'Contact'].map((item) => (
               <a
@@ -88,23 +88,23 @@ const Footer = () => {
           <motion.div
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
-            transition={{ duration: 0.8, delay: 0.6 }}
+            transition={{ duration: 0.8, delay: 0.5 }}
             viewport={{ once: true }}
-            className="flex items-center justify-center space-x-2 text-sm text-muted-foreground"
+            className="flex items-center justify-center space-x-2 text-xs text-muted-foreground"
           >
             <span>© 2024 Sayantan Mukherjee. Made with</span>
             <motion.div
-              animate={{ 
+              animate={{
                 scale: [1, 1.2, 1],
                 color: ["#8B5CF6", "#EC4899", "#8B5CF6"]
               }}
-              transition={{ 
-                duration: 2, 
+              transition={{
+                duration: 2,
                 repeat: Infinity,
                 ease: "easeInOut"
               }}
             >
-              <Heart className="h-4 w-4 fill-current" />
+              <Heart className="h-3.5 w-3.5 fill-current" />
             </motion.div>
             <span>and lots of coffee.</span>
           </motion.div>
@@ -115,9 +115,9 @@ const Footer = () => {
             className="mx-auto block text-xs text-muted-foreground hover:text-primary transition-colors duration-300"
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
-            transition={{ duration: 0.8, delay: 0.8 }}
+            transition={{ duration: 0.8, delay: 0.7 }}
             viewport={{ once: true }}
-            whileHover={{ y: -2 }}
+            whileHover={{ y: -1 }}
             whileTap={{ y: 0 }}
           >
             Back to Top ↑

@@ -4,34 +4,58 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
-import { Mail, Github, MapPin, Send } from "lucide-react";
+import { Send, Mail, Github, MapPin, CheckCircle } from "lucide-react";
 import { useState } from "react";
 import { toast } from "sonner";
+import emailjs from "@emailjs/browser";
 
 const ContactSection = () => {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
-    message: ""
+    message: "",
   });
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Simulate form submission
-    toast.success("Message sent successfully! I'll get back to you soon.");
-    setFormData({ name: "", email: "", message: "" });
+    setIsSubmitting(true);
+
+    try {
+      await emailjs.send(
+        "service_6748lqm", // your service ID
+        "template_t9pfc8t", // your template ID
+        {
+          name: formData.name,
+          email: formData.email,
+          message: formData.message,
+        },
+        "IiHy4RlqqzFxb7I47" // your public key
+      );
+
+      toast.success("✅ Message sent successfully! I'll get back to you soon.");
+      setFormData({ name: "", email: "", message: "" });
+    } catch (error) {
+      console.error(error);
+      toast.error("❌ Something went wrong. Please try again later.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
     setFormData({
       ...formData,
-      [e.target.name]: e.target.value
+      [e.target.name]: e.target.value,
     });
   };
 
   return (
-    <section id="contact" className="py-20 px-6 bg-gradient-card">
-      <div className="max-w-6xl mx-auto">
+    <section id="contact" className="py-20 px-6 bg-gradient-card relative">
+      <div className="max-w-6xl mx-auto relative z-10">
+        {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -40,15 +64,17 @@ const ContactSection = () => {
           className="text-center mb-16"
         >
           <h2 className="text-4xl md:text-5xl font-bold mb-4 gradient-text">
-            Let's Work Together
+            Let’s Work Together
           </h2>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            Have a project in mind? I'd love to hear about it and discuss how we can bring your ideas to life.
+            Have an idea, project, or just want to say hi? Drop me a message —
+            I’ll be happy to connect.
           </p>
         </motion.div>
 
-        <div className="grid lg:grid-cols-2 gap-12">
-          {/* Contact Information */}
+        {/* Two Columns */}
+        <div className="grid lg:grid-cols-2 gap-12 items-start">
+          {/* Left Column: Info + Why Work With Me */}
           <motion.div
             initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -56,96 +82,62 @@ const ContactSection = () => {
             viewport={{ once: true }}
             className="space-y-8"
           >
-            <Card className="glass-card">
-              <CardContent className="p-8">
-                <h3 className="text-2xl font-bold mb-6 text-primary">Contact Information</h3>
-                
-                <div className="space-y-6">
-                  <motion.div 
-                    className="flex items-center space-x-4 group cursor-pointer"
-                    whileHover={{ x: 10 }}
-                    transition={{ duration: 0.3 }}
-                  >
-                    <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center group-hover:bg-primary/20 transition-colors duration-300">
-                      <Mail className="h-6 w-6 text-primary" />
-                    </div>
-                    <div>
-                      <p className="font-semibold">Email</p>
-                      <p className="text-muted-foreground">sayantanmukherjee000@gmail.com</p>
-                    </div>
-                  </motion.div>
-
-                  <motion.div 
-                    className="flex items-center space-x-4 group cursor-pointer"
-                    whileHover={{ x: 10 }}
-                    transition={{ duration: 0.3 }}
-                  >
-                    <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center group-hover:bg-primary/20 transition-colors duration-300">
-                      <Github className="h-6 w-6 text-primary" />
-                    </div>
-                    <div>
-                      <p className="font-semibold">GitHub</p>
-                      <p className="text-muted-foreground">
-                        <a href="https://github.com/meaow-stack" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors">
-                          github.com/meaow-stack
-                        </a>
-                      </p>
-                    </div>
-                  </motion.div>
-
-                  <motion.div 
-                    className="flex items-center space-x-4 group cursor-pointer"
-                    whileHover={{ x: 10 }}
-                    transition={{ duration: 0.3 }}
-                  >
-                    <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center group-hover:bg-primary/20 transition-colors duration-300">
-                      <MapPin className="h-6 w-6 text-primary" />
-                    </div>
-                    <div>
-                      <p className="font-semibold">Location</p>
-                      <p className="text-muted-foreground">Asansol, West Bengal, India</p>
-                    </div>
-                  </motion.div>
-                </div>
-              </CardContent>
+            <Card className="glass-card p-8">
+              <h3 className="text-2xl font-bold mb-4">Why Work With Me?</h3>
+              <ul className="space-y-4 text-muted-foreground">
+                <li className="flex items-start space-x-3">
+                  <CheckCircle className="h-5 w-5 text-primary mt-1" />
+                  <span>Creative & detail-oriented developer</span>
+                </li>
+                <li className="flex items-start space-x-3">
+                  <CheckCircle className="h-5 w-5 text-primary mt-1" />
+                  <span>Passionate about AI, ML & full-stack projects</span>
+                </li>
+                <li className="flex items-start space-x-3">
+                  <CheckCircle className="h-5 w-5 text-primary mt-1" />
+                  <span>Quick learner, collaborative & adaptive</span>
+                </li>
+              </ul>
             </Card>
 
-            <Card className="glass-card">
-              <CardContent className="p-8">
-                <h3 className="text-2xl font-bold mb-4 text-primary">Why Work With Me?</h3>
-                <ul className="space-y-3 text-muted-foreground">
-                  <li className="flex items-start">
-                    <span className="w-2 h-2 bg-primary rounded-full mt-2 mr-3 flex-shrink-0"></span>
-                    <span>Currently pursuing engineering degree</span>
-                  </li>
-                  <li className="flex items-start">
-                    <span className="w-2 h-2 bg-primary rounded-full mt-2 mr-3 flex-shrink-0"></span>
-                    <span>Expertise in AI/ML and full-stack development</span>
-                  </li>
-                  <li className="flex items-start">
-                    <span className="w-2 h-2 bg-primary rounded-full mt-2 mr-3 flex-shrink-0"></span>
-                    <span>90%+ accuracy in ML model implementations</span>
-                  </li>
-                  <li className="flex items-start">
-                    <span className="w-2 h-2 bg-primary rounded-full mt-2 mr-3 flex-shrink-0"></span>
-                    <span>Strong focus on real-world problem solving</span>
-                  </li>
-                </ul>
-              </CardContent>
+            <Card className="glass-card p-8">
+              <h3 className="text-2xl font-bold mb-4">Contact Info</h3>
+              <ul className="space-y-4 text-muted-foreground">
+                <li className="flex items-center space-x-3">
+                  <Mail className="h-5 w-5 text-primary" />
+                  <span>sayantanmukherjee000@gmail.com</span>
+                </li>
+                <li className="flex items-center space-x-3">
+                  <Github className="h-5 w-5 text-primary" />
+                  <a
+                    href="https://github.com/meaow-stack"
+                    target="_blank"
+                    className="hover:underline"
+                  >
+                    https://github.com/meaow-stack
+                  </a>
+                </li>
+                <li className="flex items-center space-x-3">
+                  <MapPin className="h-5 w-5 text-primary" />
+                  <span>Kolkata, India</span>
+                </li>
+              </ul>
             </Card>
           </motion.div>
 
-          {/* Contact Form */}
+          {/* Right Column: Contact Form */}
           <motion.div
             initial={{ opacity: 0, x: 50 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
             viewport={{ once: true }}
           >
-            <Card className="glass-card">
+            <Card className="glass-card hover:shadow-glow transition-transform duration-300 hover:scale-[1.01]">
               <CardContent className="p-8">
-                <h3 className="text-2xl font-bold mb-6 text-primary">Send Me a Message</h3>
-                
+                <h3 className="text-2xl font-bold mb-6 text-primary">
+                  Send Me a Message
+                </h3>
+
                 <form onSubmit={handleSubmit} className="space-y-6">
                   <div className="space-y-2">
                     <Label htmlFor="name">Name</Label>
@@ -154,9 +146,9 @@ const ContactSection = () => {
                       name="name"
                       value={formData.name}
                       onChange={handleChange}
-                      placeholder="Your full name"
+                      placeholder="👋 Hey, what's your name?"
                       required
-                      className="bg-muted/50 border-primary/20 focus:border-primary"
+                      className="bg-muted/50 border-primary/20 focus:border-primary focus:ring-2 focus:ring-primary/50"
                     />
                   </div>
 
@@ -170,7 +162,7 @@ const ContactSection = () => {
                       onChange={handleChange}
                       placeholder="your.email@example.com"
                       required
-                      className="bg-muted/50 border-primary/20 focus:border-primary"
+                      className="bg-muted/50 border-primary/20 focus:border-primary focus:ring-2 focus:ring-primary/50"
                     />
                   </div>
 
@@ -181,20 +173,30 @@ const ContactSection = () => {
                       name="message"
                       value={formData.message}
                       onChange={handleChange}
-                      placeholder="Tell me about your project..."
+                      placeholder="Tell me about your project or just say hi 👇"
                       rows={6}
                       required
-                      className="bg-muted/50 border-primary/20 focus:border-primary resize-none"
+                      className="bg-muted/50 border-primary/20 focus:border-primary focus:ring-2 focus:ring-primary/50 resize-none"
                     />
                   </div>
 
                   <Button
                     type="submit"
                     size="lg"
+                    disabled={isSubmitting}
                     className="w-full bg-gradient-primary hover:shadow-glow transition-all duration-300 group"
                   >
-                    <Send className="mr-2 h-5 w-5 group-hover:animate-pulse" />
-                    Send Message
+                    {isSubmitting ? (
+                      <span className="flex items-center">
+                        <Send className="mr-2 h-5 w-5 animate-spin" />
+                        Sending...
+                      </span>
+                    ) : (
+                      <span className="flex items-center">
+                        <Send className="mr-2 h-5 w-5 group-hover:animate-pulse" />
+                        Send Message
+                      </span>
+                    )}
                   </Button>
                 </form>
               </CardContent>
@@ -202,6 +204,9 @@ const ContactSection = () => {
           </motion.div>
         </div>
       </div>
+
+      {/* Subtle background glow */}
+      <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-primary/10 blur-3xl -z-10"></div>
     </section>
   );
 };
