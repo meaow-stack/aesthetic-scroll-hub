@@ -22,6 +22,9 @@ Deployed seamlessly with [Netlify](https://www.netlify.com/).
 
 ---
 
+📃 License
+MIT License – See the LICENSE file for details.
+
 ## 🛠️ Getting Started
 
 ### 1️⃣ Clone the Repository
