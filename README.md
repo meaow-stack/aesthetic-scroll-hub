@@ -8,7 +8,7 @@ Deployed seamlessly with [Netlify](https://www.netlify.com/).
 ---
 
 ## 🔗 Live Demo
-👉 [View Website](https://sayantannnmukherjee225.netlify.app/)
+👉 [View Website](https://portfoliosayantan.vercel.app/)
 
 ---
 
