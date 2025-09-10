@@ -92,7 +92,7 @@ const Footer = () => {
             viewport={{ once: true }}
             className="flex items-center justify-center space-x-2 text-xs text-muted-foreground"
           >
-            <span>© 2024 Sayantan Mukherjee. Made with</span>
+            <span> © 2025 Sayantan Mukherjee. Made with</span>
             <motion.div
               animate={{
                 scale: [1, 1.2, 1],
