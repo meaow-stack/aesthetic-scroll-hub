@@ -60,9 +60,9 @@ Launch a Codespace directly from GitHub.
 
 Edit files in-browser and commit changes.
 
-🌍 Deployment (Netlify)
+🌍 Deployment (Netlify/Vercel)
 
-Go to Netlify
+Go to Netlify/vercel
 .
 
 Click New Site from Git.
