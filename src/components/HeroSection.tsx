@@ -58,7 +58,7 @@ const HeroSection = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.5 }}
           >
-            Full Stack Developer • ML Engineer • Student
+            Full Stack Web Developer • AI/ML • ECE Student 
           </motion.p>
           
           {/* Buttons */}
