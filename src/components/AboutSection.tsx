@@ -5,7 +5,7 @@ import profilePhoto from "@/assets/profile-photo.jpg";
 
 const AboutSection = () => {
   return (
-    <section id="about" className="py-20 px-6">
+    <section id="about" className="py-20 px-6 bg-background">
       <div className="max-w-6xl mx-auto">
         {/* Heading */}
         <motion.div
@@ -34,7 +34,7 @@ const AboutSection = () => {
             className="relative flex justify-center"
           >
             <div className="relative w-72 h-72 md:w-80 md:h-80">
-              <div className="absolute inset-0 bg-gradient-primary rounded-full opacity-25 blur-xl animate-pulse"></div>
+              <div className="absolute inset-0 bg-gradient-primary rounded-full opacity-25 blur-xl animate-pulse" />
               <motion.img
                 src={profilePhoto}
                 alt="Sayantan Mukherjee - Full Stack Developer"
@@ -60,10 +60,10 @@ const AboutSection = () => {
                   <Code className="h-6 w-6" /> My Story
                 </h3>
                 <p className="text-lg text-muted-foreground leading-relaxed">
-                  I’m currently pursuing my degree at <strong>Asansol Engineering College</strong>, 
-                  with a deep passion for full-stack development and machine learning. 
-                  My academic foundation comes from <strong>St. Patrick's Higher Secondary School</strong> 
-                  and <strong>St. Vincent's High and Technical School</strong>, both prestigious institutions 
+                  I’m currently pursuing my degree at <strong>Asansol Engineering College</strong>,
+                  with a deep passion for full-stack development and machine learning.
+                  My academic foundation comes from <strong>St. Patrick's Higher Secondary School</strong>
+                  and <strong>St. Vincent's High and Technical School</strong>, both prestigious institutions
                   in eastern India.
                 </p>
               </CardContent>
@@ -90,9 +90,9 @@ const AboutSection = () => {
                   <Target className="h-6 w-6" /> My Mission
                 </h3>
                 <p className="text-lg text-muted-foreground leading-relaxed">
-                  My mission is to <strong>leverage technology and machine learning</strong> to 
-                  deliver impactful solutions that improve lives. I believe in continuous learning, 
-                  clean code practices, and building applications that are both robust and 
+                  My mission is to <strong>leverage technology and machine learning</strong> to
+                  deliver impactful solutions that improve lives. I believe in continuous learning,
+                  clean code practices, and building applications that are both robust and
                   user-centric.
                 </p>
               </CardContent>
