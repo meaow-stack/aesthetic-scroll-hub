@@ -1,23 +1,71 @@
 "use client";
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import { Github, Linkedin, Twitter, Mail, Heart, Sun, Moon, Home } from "lucide-react";
+import {
+  Github,
+  Linkedin,
+  Twitter,
+  Mail,
+  Heart,
+  Sun,
+  Moon,
+  Home,
+} from "lucide-react";
 
 const Footer = () => {
   const [visits, setVisits] = useState<number>(0);
+  const [uniqueVisits, setUniqueVisits] = useState<number>(0);
+  const [todayVisits, setTodayVisits] = useState<number>(0);
   const [darkMode, setDarkMode] = useState<boolean>(false);
+  const [displayCount, setDisplayCount] = useState<number>(0);
 
-  // Visitor counter (stored in localStorage for demo)
+  // Fetch from Counter API
   useEffect(() => {
-    const count = localStorage.getItem("visitCount");
-    const newCount = count ? parseInt(count) + 1 : 1;
-    localStorage.setItem("visitCount", newCount.toString());
-    setVisits(newCount);
+    const fetchData = async () => {
+      try {
+        const res = await fetch("https://api.counterapi.dev/v1/meaow-stack/portfolio", {
+          headers: {
+            Authorization: "Bearer ut_Of7eZFljtzzstOZ34fWxpdVKeDVOH6Y2kf4xNETL",
+          },
+        });
+        const data = await res.json();
+
+        setVisits(data.count || 0);
+        setUniqueVisits(data.unique || 0);
+        setTodayVisits(data.today || 0);
+      } catch (err) {
+        console.error("Error fetching counter:", err);
+      }
+    };
+
+    fetchData();
   }, []);
+
+  // Animate the counter from 0 → visits
+  useEffect(() => {
+    if (visits > 0) {
+      let start = 0;
+      const duration = 1500; // 1.5s
+      const stepTime = 20;
+      const increment = Math.ceil(visits / (duration / stepTime));
+
+      const timer = setInterval(() => {
+        start += increment;
+        if (start >= visits) {
+          setDisplayCount(visits);
+          clearInterval(timer);
+        } else {
+          setDisplayCount(start);
+        }
+      }, stepTime);
+
+      return () => clearInterval(timer);
+    }
+  }, [visits]);
 
   // Toggle dark mode
   const toggleTheme = () => {
-    setDarkMode(!darkMode);
+    setDarkMode((prev) => !prev);
     document.documentElement.classList.toggle("dark", !darkMode);
   };
 
@@ -26,26 +74,26 @@ const Footer = () => {
       icon: Github,
       href: "https://github.com/meaow-stack",
       label: "GitHub",
-      color: "hover:text-gray-400"
+      color: "hover:text-gray-400",
     },
     {
       icon: Linkedin,
       href: "https://www.linkedin.com/in/sayantan-mukherjee-5a4b46293/",
       label: "LinkedIn",
-      color: "hover:text-blue-400"
+      color: "hover:text-blue-400",
     },
     {
       icon: Twitter,
       href: "https://x.com/chainghoul_4",
       label: "Twitter",
-      color: "hover:text-cyan-400"
+      color: "hover:text-cyan-400",
     },
     {
       icon: Mail,
       href: "mailto:sayantanmukherjee000@gmail.com",
       label: "Email",
-      color: "hover:text-green-400"
-    }
+      color: "hover:text-green-400",
+    },
   ];
 
   return (
@@ -74,7 +122,7 @@ const Footer = () => {
                 whileHover={{
                   scale: 1.1,
                   rotate: 5,
-                  transition: { duration: 0.3 }
+                  transition: { duration: 0.3 },
                 }}
                 whileTap={{ scale: 0.95 }}
                 aria-label={link.label}
@@ -109,10 +157,20 @@ const Footer = () => {
             whileInView={{ opacity: 1 }}
             transition={{ duration: 0.8, delay: 0.4 }}
             viewport={{ once: true }}
-            className="text-xs text-muted-foreground"
+            className="text-xs text-muted-foreground space-y-1"
           >
-            👀 Visitor Count:{" "}
-            <span className="font-semibold text-primary">{visits}</span>
+            <div>
+              👀 Total Visitors:{" "}
+              <span className="font-semibold text-primary">{displayCount}</span>
+            </div>
+            <div>
+              🔥 Today’s Visitors:{" "}
+              <span className="font-semibold text-primary">{todayVisits}</span>
+            </div>
+            <div>
+              ⭐ Unique Visitors:{" "}
+              <span className="font-semibold text-primary">{uniqueVisits}</span>
+            </div>
           </motion.div>
 
           {/* Copyright */}
@@ -123,16 +181,16 @@ const Footer = () => {
             viewport={{ once: true }}
             className="flex items-center justify-center space-x-2 text-xs text-muted-foreground"
           >
-            <span> © 2025 Sayantan Mukherjee. Made with</span>
+            <span>© 2025 Sayantan Mukherjee. Made with</span>
             <motion.div
               animate={{
                 scale: [1, 1.2, 1],
-                color: ["#8B5CF6", "#EC4899", "#8B5CF6"]
+                color: ["#8B5CF6", "#EC4899", "#8B5CF6"],
               }}
               transition={{
                 duration: 2,
                 repeat: Infinity,
-                ease: "easeInOut"
+                ease: "easeInOut",
               }}
             >
               <Heart className="h-3.5 w-3.5 fill-current" />
@@ -152,6 +210,7 @@ const Footer = () => {
             <button
               onClick={toggleTheme}
               className="p-3 rounded-full bg-primary/20 hover:bg-primary/30 text-primary shadow-lg transition"
+              aria-label="Toggle Dark Mode"
             >
               {darkMode ? <Sun size={18} /> : <Moon size={18} />}
             </button>
@@ -162,6 +221,7 @@ const Footer = () => {
                 window.scrollTo({ top: 0, behavior: "smooth" })
               }
               className="p-3 rounded-full bg-primary/20 hover:bg-primary/30 text-primary shadow-lg transition"
+              aria-label="Back to Top"
             >
               ↑
             </button>
@@ -170,6 +230,7 @@ const Footer = () => {
             <a
               href="#"
               className="p-3 rounded-full bg-primary/20 hover:bg-primary/30 text-primary shadow-lg transition"
+              aria-label="Home"
             >
               <Home size={18} />
             </a>
