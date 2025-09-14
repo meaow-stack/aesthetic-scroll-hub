@@ -23,14 +23,14 @@ const ContactSection = () => {
 
     try {
       await emailjs.send(
-        "service_6748lqm", // your service ID
-        "template_t9pfc8t", // your template ID
+        "service_6748lqm", // service ID
+        "template_t9pfc8t", // template ID
         {
           name: formData.name,
           email: formData.email,
           message: formData.message,
         },
-        "IiHy4RlqqzFxb7I47" // your public key
+        "IiHy4RlqqzFxb7I47" // public key
       );
 
       toast.success("✅ Message sent successfully! I'll get back to you soon.");
@@ -53,7 +53,7 @@ const ContactSection = () => {
   };
 
   return (
-    <section id="contact" className="py-20 px-6 bg-gradient-card relative">
+    <section id="contact" className="py-20 px-6 relative bg-gradient-to-b from-background via-background to-muted/30 overflow-hidden">
       <div className="max-w-6xl mx-auto relative z-10">
         {/* Header */}
         <motion.div
@@ -61,20 +61,20 @@ const ContactSection = () => {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
-          className="text-center mb-16"
+          className="text-center mb-16 relative"
         >
-          <h2 className="text-4xl md:text-5xl font-bold mb-4 gradient-text">
+          <h2 className="text-4xl md:text-5xl font-bold mb-4 gradient-text inline-block relative">
             Let’s Work Together
+            <span className="absolute left-1/2 -bottom-2 w-16 h-1 bg-primary rounded-full transform -translate-x-1/2" />
           </h2>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            Have an idea, project, or just want to say hi? Drop me a message —
-            I’ll be happy to connect.
+            Have an idea, project, or just want to say hi? Drop me a message — I’ll be happy to connect.
           </p>
         </motion.div>
 
         {/* Two Columns */}
         <div className="grid lg:grid-cols-2 gap-12 items-start">
-          {/* Left Column: Info + Why Work With Me */}
+          {/* Left Column */}
           <motion.div
             initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -82,30 +82,33 @@ const ContactSection = () => {
             viewport={{ once: true }}
             className="space-y-8"
           >
-            <Card className="glass-card p-8">
+            <Card className="glass-card p-8 hover:shadow-glow transition-transform duration-300 hover:scale-[1.01]">
               <h3 className="text-2xl font-bold mb-4">Why Work With Me?</h3>
               <ul className="space-y-4 text-muted-foreground">
-                <li className="flex items-start space-x-3">
-                  <CheckCircle className="h-5 w-5 text-primary mt-1" />
-                  <span>Creative & detail-oriented developer</span>
-                </li>
-                <li className="flex items-start space-x-3">
-                  <CheckCircle className="h-5 w-5 text-primary mt-1" />
-                  <span>Passionate about AI, ML & full-stack projects</span>
-                </li>
-                <li className="flex items-start space-x-3">
-                  <CheckCircle className="h-5 w-5 text-primary mt-1" />
-                  <span>Quick learner, collaborative & adaptive</span>
-                </li>
+                {[
+                  "Creative & detail-oriented developer",
+                  "Passionate about AI, ML & full-stack projects",
+                  "Quick learner, collaborative & adaptive",
+                ].map((item, i) => (
+                  <li key={i} className="flex items-start space-x-3">
+                    <CheckCircle className="h-5 w-5 text-primary mt-1" />
+                    <span>{item}</span>
+                  </li>
+                ))}
               </ul>
             </Card>
 
-            <Card className="glass-card p-8">
+            <Card className="glass-card p-8 hover:shadow-glow transition-transform duration-300 hover:scale-[1.01]">
               <h3 className="text-2xl font-bold mb-4">Contact Info</h3>
               <ul className="space-y-4 text-muted-foreground">
                 <li className="flex items-center space-x-3">
                   <Mail className="h-5 w-5 text-primary" />
-                  <span>sayantanmukherjee000@gmail.com</span>
+                  <a
+                    href="mailto:sayantanmukherjee000@gmail.com"
+                    className="hover:underline"
+                  >
+                    sayantanmukherjee000@gmail.com
+                  </a>
                 </li>
                 <li className="flex items-center space-x-3">
                   <Github className="h-5 w-5 text-primary" />
@@ -114,7 +117,7 @@ const ContactSection = () => {
                     target="_blank"
                     className="hover:underline"
                   >
-                    https://github.com/meaow-stack
+                    github.com/meaow-stack
                   </a>
                 </li>
                 <li className="flex items-center space-x-3">
@@ -125,7 +128,7 @@ const ContactSection = () => {
             </Card>
           </motion.div>
 
-          {/* Right Column: Contact Form */}
+          {/* Right Column: Form */}
           <motion.div
             initial={{ opacity: 0, x: 50 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -205,8 +208,24 @@ const ContactSection = () => {
         </div>
       </div>
 
-      {/* Subtle background glow */}
-      <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-primary/10 blur-3xl -z-10"></div>
+      {/* Subtle background glow & floating icons */}
+      <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-transparent to-primary/20 blur-3xl -z-10"></div>
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: [0.1, 0.3, 0.1] }}
+        transition={{ repeat: Infinity, duration: 6 }}
+        className="absolute top-10 right-20 text-primary/30"
+      >
+        <Send className="h-24 w-24" />
+      </motion.div>
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: [0.1, 0.3, 0.1] }}
+        transition={{ repeat: Infinity, duration: 8, delay: 2 }}
+        className="absolute bottom-10 left-20 text-primary/30"
+      >
+        <Mail className="h-20 w-20" />
+      </motion.div>
     </section>
   );
 };
