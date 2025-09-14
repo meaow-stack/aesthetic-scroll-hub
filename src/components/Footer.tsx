@@ -1,7 +1,26 @@
+"use client";
+import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import { Github, Linkedin, Twitter, Mail, Heart } from "lucide-react";
+import { Github, Linkedin, Twitter, Mail, Heart, Sun, Moon, Home } from "lucide-react";
 
 const Footer = () => {
+  const [visits, setVisits] = useState<number>(0);
+  const [darkMode, setDarkMode] = useState<boolean>(false);
+
+  // Visitor counter (stored in localStorage for demo)
+  useEffect(() => {
+    const count = localStorage.getItem("visitCount");
+    const newCount = count ? parseInt(count) + 1 : 1;
+    localStorage.setItem("visitCount", newCount.toString());
+    setVisits(newCount);
+  }, []);
+
+  // Toggle dark mode
+  const toggleTheme = () => {
+    setDarkMode(!darkMode);
+    document.documentElement.classList.toggle("dark", !darkMode);
+  };
+
   const socialLinks = [
     {
       icon: Github,
@@ -30,14 +49,14 @@ const Footer = () => {
   ];
 
   return (
-    <footer className="py-8 px-6 border-t border-primary/20">
+    <footer className="relative py-10 px-6 border-t border-primary/20 bg-background">
       <div className="max-w-6xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
-          className="text-center space-y-6"
+          className="text-center space-y-8"
         >
           {/* Social Links */}
           <div className="flex justify-center space-x-5">
@@ -71,9 +90,9 @@ const Footer = () => {
             whileInView={{ opacity: 1 }}
             transition={{ duration: 0.8, delay: 0.3 }}
             viewport={{ once: true }}
-            className="flex justify-center space-x-6 text-sm"
+            className="flex justify-center flex-wrap gap-6 text-sm"
           >
-            {['About', 'Skills', 'Projects', 'Contact'].map((item) => (
+            {["About", "Skills", "Projects", "Contact"].map((item) => (
               <a
                 key={item}
                 href={`#${item.toLowerCase()}`}
@@ -83,6 +102,18 @@ const Footer = () => {
               </a>
             ))}
           </motion.nav>
+
+          {/* Visitor Counter */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            transition={{ duration: 0.8, delay: 0.4 }}
+            viewport={{ once: true }}
+            className="text-xs text-muted-foreground"
+          >
+            👀 Visitor Count:{" "}
+            <span className="font-semibold text-primary">{visits}</span>
+          </motion.div>
 
           {/* Copyright */}
           <motion.div
@@ -106,22 +137,43 @@ const Footer = () => {
             >
               <Heart className="h-3.5 w-3.5 fill-current" />
             </motion.div>
-            <span>and lots of coffee.</span>
+            <span>and ☕ coffee.</span>
           </motion.div>
 
-          {/* Back to Top */}
-          <motion.button
-            onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-            className="mx-auto block text-xs text-muted-foreground hover:text-primary transition-colors duration-300"
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
+          {/* Toolbar */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.7 }}
             viewport={{ once: true }}
-            whileHover={{ y: -1 }}
-            whileTap={{ y: 0 }}
+            className="fixed bottom-6 right-6 flex flex-col space-y-3"
           >
-            Back to Top ↑
-          </motion.button>
+            {/* Dark/Light Mode Toggle */}
+            <button
+              onClick={toggleTheme}
+              className="p-3 rounded-full bg-primary/20 hover:bg-primary/30 text-primary shadow-lg transition"
+            >
+              {darkMode ? <Sun size={18} /> : <Moon size={18} />}
+            </button>
+
+            {/* Back to Top */}
+            <button
+              onClick={() =>
+                window.scrollTo({ top: 0, behavior: "smooth" })
+              }
+              className="p-3 rounded-full bg-primary/20 hover:bg-primary/30 text-primary shadow-lg transition"
+            >
+              ↑
+            </button>
+
+            {/* Home Shortcut */}
+            <a
+              href="#"
+              className="p-3 rounded-full bg-primary/20 hover:bg-primary/30 text-primary shadow-lg transition"
+            >
+              <Home size={18} />
+            </a>
+          </motion.div>
         </motion.div>
       </div>
     </footer>
