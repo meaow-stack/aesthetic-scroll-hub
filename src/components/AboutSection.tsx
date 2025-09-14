@@ -2,8 +2,31 @@ import { motion } from "framer-motion";
 import { Card, CardContent } from "@/components/ui/card";
 import { Code, Cpu, Target } from "lucide-react";
 import profilePhoto from "@/assets/profile-photo.jpg";
+import { useState, useEffect } from "react";
+
+const funFacts = [
+  "💡 I debug faster with coffee ☕",
+  "🎵 I love coding while listening to Lo-fi beats",
+  "📚 Currently exploring Reinforcement Learning",
+  "🌱 Believe in lifelong learning & growth",
+];
+
+const skills = [
+  { name: "React & Next.js", level: 90 },
+  { name: "Django & Python", level: 85 },
+  { name: "AI/ML (TensorFlow, NLP)", level: 80 },
+];
 
 const AboutSection = () => {
+  const [factIndex, setFactIndex] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setFactIndex((prev) => (prev + 1) % funFacts.length);
+    }, 4000);
+    return () => clearInterval(interval);
+  }, []);
+
   return (
     <section id="about" className="py-20 px-6 bg-background">
       <div className="max-w-6xl mx-auto">
@@ -25,13 +48,13 @@ const AboutSection = () => {
         </motion.div>
 
         <div className="grid lg:grid-cols-2 gap-12 items-center">
-          {/* Profile Photo */}
+          {/* Profile Photo & Fun Fact */}
           <motion.div
             initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
-            className="relative flex justify-center"
+            className="relative flex flex-col items-center gap-6"
           >
             <div className="relative w-72 h-72 md:w-80 md:h-80">
               <div className="absolute inset-0 bg-gradient-primary rounded-full opacity-25 blur-xl animate-pulse" />
@@ -43,6 +66,16 @@ const AboutSection = () => {
                 transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
               />
             </div>
+            {/* Fun Fact Rotator */}
+            <motion.p
+              key={factIndex}
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              className="italic text-muted-foreground text-lg text-center"
+            >
+              {funFacts[factIndex]}
+            </motion.p>
           </motion.div>
 
           {/* Content */}
@@ -54,49 +87,74 @@ const AboutSection = () => {
             className="space-y-8"
           >
             {/* My Story */}
-            <Card className="glass-card hover:shadow-lg transition-shadow duration-300">
-              <CardContent className="p-6">
-                <h3 className="text-2xl font-bold mb-3 text-primary flex items-center gap-2">
-                  <Code className="h-6 w-6" /> My Story
-                </h3>
-                <p className="text-lg text-muted-foreground leading-relaxed">
-                  I’m currently pursuing my degree at <strong>Asansol Engineering College</strong>,
-                  with a deep passion for full-stack development and machine learning.
-                  My academic foundation comes from <strong>St. Patrick's Higher Secondary School</strong>
-                  and <strong>St. Vincent's High and Technical School</strong>, both prestigious institutions
-                  in eastern India.
-                </p>
-              </CardContent>
-            </Card>
+            <motion.div whileHover={{ scale: 1.02, rotate: -1 }} transition={{ type: "spring", stiffness: 200 }}>
+              <Card className="glass-card hover:shadow-lg transition-shadow duration-300">
+                <CardContent className="p-6">
+                  <h3 className="text-2xl font-bold mb-3 text-primary flex items-center gap-2">
+                    <Code className="h-6 w-6" /> My Story
+                  </h3>
+                  <p className="text-lg text-muted-foreground leading-relaxed">
+                    I’m currently pursuing my degree at <strong>Asansol Engineering College</strong>,
+                    with a deep passion for full-stack development and machine learning.
+                    My academic foundation comes from <strong>St. Patrick's Higher Secondary School</strong>
+                    and <strong>St. Vincent's High and Technical School</strong>, both prestigious institutions
+                    in eastern India.
+                  </p>
+                </CardContent>
+              </Card>
+            </motion.div>
 
-            {/* What I Do */}
-            <Card className="glass-card hover:shadow-lg transition-shadow duration-300">
-              <CardContent className="p-6">
-                <h3 className="text-2xl font-bold mb-3 text-primary flex items-center gap-2">
-                  <Cpu className="h-6 w-6" /> What I Do
-                </h3>
-                <ul className="list-disc list-inside text-lg text-muted-foreground space-y-2">
-                  <li>Build full-stack apps with <strong>React, Django & Python</strong></li>
-                  <li>Develop AI/ML projects in <strong>healthcare & agriculture</strong></li>
-                  <li>Create user-friendly and scalable digital solutions</li>
-                </ul>
-              </CardContent>
-            </Card>
+            {/* What I Do + Skill Bars */}
+            <motion.div whileHover={{ scale: 1.02, rotate: 1 }} transition={{ type: "spring", stiffness: 200 }}>
+              <Card className="glass-card hover:shadow-lg transition-shadow duration-300">
+                <CardContent className="p-6">
+                  <h3 className="text-2xl font-bold mb-3 text-primary flex items-center gap-2">
+                    <Cpu className="h-6 w-6" /> What I Do
+                  </h3>
+                  <ul className="list-disc list-inside text-lg text-muted-foreground space-y-2 mb-6">
+                    <li>Build full-stack apps with <strong>React, Django & Python</strong></li>
+                    <li>Develop AI/ML projects in <strong>healthcare & agriculture</strong></li>
+                    <li>Create user-friendly and scalable digital solutions</li>
+                  </ul>
+
+                  {/* Skill Bars */}
+                  <div className="space-y-4">
+                    {skills.map((skill, i) => (
+                      <div key={i}>
+                        <div className="flex justify-between mb-1 text-sm font-medium text-gray-300">
+                          <span>{skill.name}</span>
+                          <span>{skill.level}%</span>
+                        </div>
+                        <motion.div
+                          initial={{ width: 0 }}
+                          whileInView={{ width: `${skill.level}%` }}
+                          transition={{ duration: 1, delay: i * 0.2 }}
+                          viewport={{ once: true }}
+                          className="h-2 bg-primary rounded-full"
+                        />
+                      </div>
+                    ))}
+                  </div>
+                </CardContent>
+              </Card>
+            </motion.div>
 
             {/* My Mission */}
-            <Card className="glass-card hover:shadow-lg transition-shadow duration-300">
-              <CardContent className="p-6">
-                <h3 className="text-2xl font-bold mb-3 text-primary flex items-center gap-2">
-                  <Target className="h-6 w-6" /> My Mission
-                </h3>
-                <p className="text-lg text-muted-foreground leading-relaxed">
-                  My mission is to <strong>leverage technology and machine learning</strong> to
-                  deliver impactful solutions that improve lives. I believe in continuous learning,
-                  clean code practices, and building applications that are both robust and
-                  user-centric.
-                </p>
-              </CardContent>
-            </Card>
+            <motion.div whileHover={{ scale: 1.02, rotate: -1 }} transition={{ type: "spring", stiffness: 200 }}>
+              <Card className="glass-card hover:shadow-lg transition-shadow duration-300">
+                <CardContent className="p-6">
+                  <h3 className="text-2xl font-bold mb-3 text-primary flex items-center gap-2">
+                    <Target className="h-6 w-6" /> My Mission
+                  </h3>
+                  <p className="text-lg text-muted-foreground leading-relaxed">
+                    My mission is to <strong>leverage technology and machine learning</strong> to
+                    deliver impactful solutions that improve lives. I believe in continuous learning,
+                    clean code practices, and building applications that are both robust and
+                    user-centric.
+                  </p>
+                </CardContent>
+              </Card>
+            </motion.div>
           </motion.div>
         </div>
       </div>
