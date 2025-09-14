@@ -2,12 +2,43 @@ import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Download, Mail, ChevronDown, Sparkles } from "lucide-react";
 import heroBackground from "@/assets/hero-background.jpg";
+import { useEffect, useState } from "react";
+
+const quotes = [
+  "“Code is like humor. When you have to explain it, it’s bad.” – Cory House",
+  "“The best way to predict the future is to invent it.” – Alan Kay",
+  "“First, solve the problem. Then, write the code.” – John Johnson",
+];
+
+const roles = [
+  "Full Stack Web Developer",
+  "AI/ML Enthusiast",
+  "ECE Student",
+];
 
 const HeroSection = () => {
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
     element?.scrollIntoView({ behavior: "smooth" });
   };
+
+  // Quote Rotator
+  const [currentQuote, setCurrentQuote] = useState(0);
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentQuote((prev) => (prev + 1) % quotes.length);
+    }, 5000);
+    return () => clearInterval(interval);
+  }, []);
+
+  // Typewriter Role Effect
+  const [currentRole, setCurrentRole] = useState(0);
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentRole((prev) => (prev + 1) % roles.length);
+    }, 3000);
+    return () => clearInterval(interval);
+  }, []);
 
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
@@ -20,7 +51,7 @@ const HeroSection = () => {
       {/* Dark Overlay */}
       <div className="absolute inset-0 z-10 bg-gradient-to-b from-black/70 via-black/50 to-black/70" />
       
-      {/* Animated Glow Effect */}
+      {/* Glow */}
       <div className="absolute inset-0 z-20 hero-glow" />
 
       {/* Content */}
@@ -40,7 +71,7 @@ const HeroSection = () => {
             Sayantan Mukherjee
           </motion.h1>
 
-          {/* Playful but professional tagline */}
+          {/* Tagline */}
           <motion.div 
             className="flex items-center justify-center gap-2 text-lg md:text-xl text-muted-foreground mb-6 font-light"
             initial={{ opacity: 0, y: 20 }}
@@ -51,14 +82,26 @@ const HeroSection = () => {
             <span>Turning ideas into code & code into impact 🚀</span>
           </motion.div>
           
-          {/* Role description */}
+          {/* Dynamic Role */}
           <motion.p 
-            className="text-xl md:text-2xl text-gray-300 mb-10 font-medium"
+            key={roles[currentRole]}
+            className="text-xl md:text-2xl text-gray-300 mb-6 font-medium"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.5 }}
+            transition={{ duration: 0.6 }}
           >
-            Full Stack Web Developer • AI/ML • ECE Student 
+            {roles[currentRole]}
+          </motion.p>
+
+          {/* Rotating Quote */}
+          <motion.p 
+            key={quotes[currentQuote]}
+            className="italic text-lg md:text-xl text-gray-400 mb-10"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 1 }}
+          >
+            {quotes[currentQuote]}
           </motion.p>
           
           {/* Buttons */}
@@ -68,7 +111,6 @@ const HeroSection = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.7 }}
           >
-            {/* Resume Preview Button */}
             <a href="/resume.pdf" target="_blank" rel="noopener noreferrer">
               <Button 
                 size="lg" 
@@ -79,7 +121,6 @@ const HeroSection = () => {
               </Button>
             </a>
             
-            {/* Contact Me Button */}
             <Button 
               variant="outline" 
               size="lg" 
