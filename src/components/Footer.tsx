@@ -14,38 +14,33 @@ import {
 
 const Footer = () => {
   const [visits, setVisits] = useState<number>(0);
-  const [uniqueVisits, setUniqueVisits] = useState<number>(0);
-  const [todayVisits, setTodayVisits] = useState<number>(0);
-  const [darkMode, setDarkMode] = useState<boolean>(false);
   const [displayCount, setDisplayCount] = useState<number>(0);
+  const [darkMode, setDarkMode] = useState<boolean>(false);
 
-  // Fetch from Counter API
+  // Fetch + increment visit count
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const res = await fetch("https://api.counterapi.dev/v1/meaow-stack/portfolio", {
-          headers: {
-            Authorization: "Bearer ut_Of7eZFljtzzstOZ34fWxpdVKeDVOH6Y2kf4xNETL",
-          },
-        });
+        const res = await fetch(
+          "https://api.counterapi.dev/v1/meaow-stack/portfolio/hit"
+        );
         const data = await res.json();
-
         setVisits(data.count || 0);
-        setUniqueVisits(data.unique || 0);
-        setTodayVisits(data.today || 0);
       } catch (err) {
         console.error("Error fetching counter:", err);
       }
     };
 
     fetchData();
+    const interval = setInterval(fetchData, 30000); // refresh every 30s
+    return () => clearInterval(interval);
   }, []);
 
-  // Animate the counter from 0 → visits
+  // Animate the counter (0 → visits)
   useEffect(() => {
     if (visits > 0) {
       let start = 0;
-      const duration = 1500; // 1.5s
+      const duration = 1200; // 1.2s
       const stepTime = 20;
       const increment = Math.ceil(visits / (duration / stepTime));
 
@@ -162,14 +157,6 @@ const Footer = () => {
             <div>
               👀 Total Visitors:{" "}
               <span className="font-semibold text-primary">{displayCount}</span>
-            </div>
-            <div>
-              🔥 Today’s Visitors:{" "}
-              <span className="font-semibold text-primary">{todayVisits}</span>
-            </div>
-            <div>
-              ⭐ Unique Visitors:{" "}
-              <span className="font-semibold text-primary">{uniqueVisits}</span>
             </div>
           </motion.div>
 
