@@ -26,5 +26,27 @@ export default defineConfig(({ mode }) => {
         "@": path.resolve(__dirname, "./src"),
       },
     },
+    build: {
+      // Increase chunk size warning to 2 MB
+      chunkSizeWarningLimit: 2000,
+
+      // Ensure tree shaking & minification
+      minify: "esbuild",
+
+      rollupOptions: {
+        output: {
+          // Split vendor chunks automatically
+          manualChunks(id) {
+            if (id.includes("node_modules")) {
+              return id
+                .toString()
+                .split("node_modules/")[1]
+                .split("/")[0]
+                .toString();
+            }
+          },
+        },
+      },
+    },
   };
 });
