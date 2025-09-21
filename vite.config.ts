@@ -27,22 +27,15 @@ export default defineConfig(({ mode }) => {
       },
     },
     build: {
-      // Increase chunk size warning to 2 MB
-      chunkSizeWarningLimit: 2000,
-
-      // Ensure tree shaking & minification
-      minify: "esbuild",
-
+      chunkSizeWarningLimit: 2000, // Increase warning limit
+      minify: "esbuild",           // Fast minification
+      // Let Vite handle chunk splitting automatically
       rollupOptions: {
         output: {
-          // Split vendor chunks automatically
+          // Optional: only split node_modules into vendor chunks
           manualChunks(id) {
             if (id.includes("node_modules")) {
-              return id
-                .toString()
-                .split("node_modules/")[1]
-                .split("/")[0]
-                .toString();
+              return "vendor";
             }
           },
         },
