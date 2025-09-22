@@ -18,8 +18,15 @@ const roles = [
 
 const HeroSection = () => {
   const scrollToSection = (sectionId: string) => {
-    const element = document.getElementById(sectionId);
-    element?.scrollIntoView({ behavior: "smooth" });
+    // Wait briefly to ensure DOM is fully rendered
+    setTimeout(() => {
+      const element = document.getElementById(sectionId);
+      if (element) {
+        element.scrollIntoView({ behavior: "smooth", block: "start" });
+      } else {
+        console.warn(`Element with ID "${sectionId}" not found. Ensure the target section has id="${sectionId}".`);
+      }
+    }, 100); // 100ms delay to handle potential rendering delays
   };
 
   // Quote Rotator
@@ -49,10 +56,10 @@ const HeroSection = () => {
       />
       
       {/* Dark Overlay */}
-      <div className="absolute inset-0 z-10 bg-gradient-to-b from-black/70 via-black/50 to-black/70" />
+      <div className="absolute inset-0 z-10 bg-gradient-to-b from-black/80 via-gray-950/70 to-indigo-950/80" />
       
       {/* Glow */}
-      <div className="absolute inset-0 z-20 hero-glow" />
+      <div className="absolute inset-0 z-20 bg-indigo-950/10 blur-3xl animate-pulse" />
 
       {/* Content */}
       <div className="relative z-30 text-center px-6 max-w-4xl mx-auto">
@@ -63,7 +70,7 @@ const HeroSection = () => {
         >
           {/* Name */}
           <motion.h1 
-            className="text-5xl md:text-7xl font-extrabold mb-4 gradient-text tracking-tight"
+            className="text-5xl md:text-7xl font-extrabold mb-4 bg-gradient-to-r from-indigo-400 to-purple-600 bg-clip-text text-transparent tracking-tight"
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 1, delay: 0.2 }}
@@ -73,19 +80,19 @@ const HeroSection = () => {
 
           {/* Tagline */}
           <motion.div 
-            className="flex items-center justify-center gap-2 text-lg md:text-xl text-muted-foreground mb-6 font-light"
+            className="flex items-center justify-center gap-2 text-lg md:text-xl text-indigo-300 mb-6 font-light"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
           >
-            <Sparkles className="h-5 w-5 text-primary animate-pulse" />
+            <Sparkles className="h-5 w-5 text-indigo-500 animate-pulse" />
             <span>Turning ideas into code & code into impact 🚀</span>
           </motion.div>
           
           {/* Dynamic Role */}
           <motion.p 
             key={roles[currentRole]}
-            className="text-xl md:text-2xl text-gray-300 mb-6 font-medium"
+            className="text-xl md:text-2xl text-indigo-200 mb-6 font-medium"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
@@ -96,7 +103,7 @@ const HeroSection = () => {
           {/* Rotating Quote */}
           <motion.p 
             key={quotes[currentQuote]}
-            className="italic text-lg md:text-xl text-gray-400 mb-10"
+            className="italic text-lg md:text-xl text-indigo-400 mb-10"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 1 }}
@@ -114,7 +121,7 @@ const HeroSection = () => {
             <a href="/resume.pdf" target="_blank" rel="noopener noreferrer">
               <Button 
                 size="lg" 
-                className="px-8 py-6 text-lg font-semibold bg-gradient-primary hover:scale-105 hover:shadow-glow transition-all duration-300 group rounded-2xl"
+                className="px-8 py-6 text-lg font-semibold bg-gradient-to-r from-indigo-600 to-purple-800 hover:scale-105 hover:shadow-[0_0_15px_rgba(79,70,229,0.5)] transition-all duration-300 group rounded-2xl"
               >
                 <Download className="mr-2 h-5 w-5 group-hover:animate-bounce" />
                 View Resume
@@ -124,7 +131,7 @@ const HeroSection = () => {
             <Button 
               variant="outline" 
               size="lg" 
-              className="px-8 py-6 text-lg font-semibold border-primary text-primary hover:bg-primary hover:text-primary-foreground hover:scale-105 transition-all duration-300 rounded-2xl"
+              className="px-8 py-6 text-lg font-semibold border-indigo-600 text-indigo-400 hover:bg-indigo-600 hover:text-white hover:scale-105 transition-all duration-300 rounded-2xl"
               onClick={() => scrollToSection("contact")}
             >
               <Mail className="mr-2 h-5 w-5" />
@@ -141,12 +148,12 @@ const HeroSection = () => {
         animate={{ opacity: 1 }}
         transition={{ delay: 1.2 }}
       >
-        <div className="h-10 w-10 border-2 border-primary rounded-full flex items-center justify-center animate-pulse mb-2">
-          <ChevronDown className="h-5 w-5 text-primary animate-bounce" />
+        <div className="h-10 w-10 border-2 border-indigo-500 rounded-full flex items-center justify-center animate-pulse mb-2">
+          <ChevronDown className="h-5 w-5 text-indigo-500 animate-bounce" />
         </div>
         <button 
           onClick={() => scrollToSection("about")}
-          className="text-sm text-muted-foreground hover:text-primary transition-colors duration-300"
+          className="text-sm text-indigo-400 hover:text-indigo-200 transition-colors duration-300"
         >
           Scroll Down
         </button>
