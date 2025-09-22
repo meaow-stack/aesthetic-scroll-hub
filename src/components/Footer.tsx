@@ -52,14 +52,14 @@ const Footer = () => {
   const navLinks = ["About", "Skills", "Projects", "Contact"];
 
   return (
-    <footer className="relative w-full min-h-[400px] sm:min-h-[350px] py-12 px-6 border-t border-primary/20 bg-gradient-to-b from-background to-primary/5 flex items-center">
+    <footer className="relative w-full py-8 px-6 border-t border-primary/20 bg-gradient-to-b from-background to-primary/5 flex items-center pb-[calc(3rem+env(safe-area-inset-bottom))]">
       <div className="max-w-6xl mx-auto w-full">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
-          className="text-center space-y-12"
+          className="text-center space-y-6"
         >
           {/* Newsletter Subscription */}
           <div className="max-w-md mx-auto">
@@ -167,7 +167,7 @@ const Footer = () => {
           {/* Back to Top Button */}
           <motion.button
             onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-            className="p-3 rounded-full bg-primary/20 hover:bg-primary/30 text-primary shadow-lg transition-colors fixed bottom-6 right-6"
+            className="p-3 rounded-full bg-primary/20 hover:bg-primary/30 text-primary shadow-lg transition-colors fixed bottom-[calc(1.5rem+env(safe-area-inset-bottom))] right-6"
             aria-label="Scroll to top"
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.9 }}
