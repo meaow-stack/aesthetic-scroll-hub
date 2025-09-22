@@ -52,7 +52,7 @@ const projects = [
 
 const ProjectsSection = () => {
   return (
-    <section id="projects" className="py-20 px-6 bg-background">
+    <section id="projects" className="py-20 px-6 bg-gradient-to-br from-black via-gray-950 to-indigo-950">
       <div className="max-w-6xl mx-auto">
         {/* Heading */}
         <motion.div
@@ -62,11 +62,11 @@ const ProjectsSection = () => {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-bold mb-4 gradient-text relative inline-block">
+          <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-indigo-400 to-purple-600 bg-clip-text text-transparent relative inline-block">
             Featured Projects
-            <span className="absolute left-1/2 -bottom-2 w-16 h-1 bg-primary rounded-full transform -translate-x-1/2" />
+            <span className="absolute left-1/2 -bottom-2 w-16 h-1 bg-indigo-600 rounded-full transform -translate-x-1/2 shadow-[0_0_12px_rgba(79,70,229,0.7)]" />
           </h2>
-          <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+          <p className="text-xl text-indigo-400 max-w-2xl mx-auto">
             A collection of impactful projects blending innovation, AI, and user-centric design ✨
           </p>
         </motion.div>
@@ -83,7 +83,7 @@ const ProjectsSection = () => {
               whileHover={{ scale: 1.02 }}
               className="transition-transform"
             >
-              <Card className="glass-card overflow-hidden group hover:shadow-2xl transition-all duration-500">
+              <Card className="glass-card overflow-hidden group bg-indigo-950/40 hover:shadow-[0_0_20px_rgba(79,70,229,0.4)] transition-all duration-500 border border-indigo-700/25">
                 <div
                   className={`grid ${
                     project.featured ? "lg:grid-cols-2" : "grid-cols-1"
@@ -98,21 +98,21 @@ const ProjectsSection = () => {
                         className="w-full h-64 lg:h-full object-cover transition-transform duration-700 group-hover:scale-110"
                         whileHover={{ scale: 1.05 }}
                       />
-                      <div className="absolute inset-0 bg-gradient-to-tr from-primary/30 via-transparent to-primary/30 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                      <div className="absolute inset-0 bg-gradient-to-tr from-indigo-600/30 via-transparent to-purple-800/30 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                     </div>
                   ) : (
-                    <div className="flex items-center justify-center h-64 bg-primary/5">
-                      <FileText className="h-16 w-16 text-primary/70" />
+                    <div className="flex items-center justify-center h-64 bg-indigo-950/20">
+                      <FileText className="h-16 w-16 text-indigo-500" />
                     </div>
                   )}
 
                   {/* Project Content */}
                   <CardContent className="p-8 flex flex-col justify-between">
                     <div>
-                      <h3 className="text-2xl font-bold mb-4 group-hover:text-primary transition-colors duration-300">
+                      <h3 className="text-2xl font-bold mb-4 text-indigo-200 group-hover:text-indigo-400 transition-colors duration-300">
                         {project.title}
                       </h3>
-                      <p className="text-muted-foreground mb-6 leading-relaxed">
+                      <p className="text-indigo-300 mb-6 leading-relaxed">
                         {project.description}
                       </p>
 
@@ -121,7 +121,7 @@ const ProjectsSection = () => {
                         {project.technologies.map((tech) => (
                           <span
                             key={tech}
-                            className="px-3 py-1 text-sm bg-primary/10 text-primary rounded-full border border-primary/20 hover:bg-primary/20 transition-colors"
+                            className="px-3 py-1 text-sm bg-indigo-900/20 text-indigo-400 rounded-full border border-indigo-600/20 hover:bg-indigo-900/30 transition-colors"
                           >
                             {tech}
                           </span>
@@ -134,7 +134,7 @@ const ProjectsSection = () => {
                       <Button
                         variant="outline"
                         size="sm"
-                        className="flex-1 group/btn border-primary text-primary hover:bg-primary hover:text-primary-foreground"
+                        className="flex-1 group/btn border-indigo-600 text-indigo-400 hover:bg-indigo-600 hover:text-white"
                         asChild
                       >
                         <a
@@ -149,7 +149,7 @@ const ProjectsSection = () => {
 
                       <Button
                         size="sm"
-                        className="flex-1 bg-gradient-primary hover:shadow-glow transition-all duration-300 group/btn"
+                        className="flex-1 bg-gradient-to-r from-indigo-600 to-purple-800 hover:shadow-[0_0_15px_rgba(79,70,229,0.5)] transition-all duration-300 group/btn"
                         asChild
                       >
                         <a
@@ -180,7 +180,7 @@ const ProjectsSection = () => {
           <Button
             variant="outline"
             size="lg"
-            className="px-8 py-6 text-lg border-primary text-primary hover:bg-primary hover:text-primary-foreground hover:shadow-glow transition-all duration-300"
+            className="px-8 py-6 text-lg border-indigo-600 text-indigo-400 hover:bg-indigo-600 hover:text-white hover:shadow-[0_0_15px_rgba(79,70,229,0.5)] transition-all duration-300"
             asChild
           >
             <a
