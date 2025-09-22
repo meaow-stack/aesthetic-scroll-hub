@@ -99,7 +99,6 @@ const SkillsSection = () => {
   );
   const [openSkill, setOpenSkill] = useState<any>(null);
 
-  // Smooth skill level increase
   useEffect(() => {
     const handleScroll = () => {
       setLevels((prev) =>
@@ -127,7 +126,6 @@ const SkillsSection = () => {
         color: "#fff",
       }}
     >
-      {/* Animated gradient background */}
       <motion.div
         animate={{ backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"] }}
         transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
@@ -142,13 +140,12 @@ const SkillsSection = () => {
         }}
       />
 
-      {/* Header */}
       <Box textAlign="center" mb={6} position="relative" zIndex={1}>
         <Typography
           variant="h3"
           sx={{
             fontWeight: "bold",
-            background: "linear-gradient(90deg,#3B82F6,#EC4899)",
+            background: "linear-gradient(90deg, #3B82F6, #EC4899)",
             WebkitBackgroundClip: "text",
             color: "transparent",
           }}
@@ -159,11 +156,10 @@ const SkillsSection = () => {
           variant="h6"
           sx={{ color: "#ccc", maxWidth: 600, mx: "auto", mt: 1 }}
         >
-          Tap a card to view details or scroll to level up  🎮
+          Tap a card to view details or scroll to level up 🎮
         </Typography>
       </Box>
 
-      {/* Skills Grid */}
       <Box
         display="grid"
         gridTemplateColumns={{ xs: "1fr", sm: "1fr 1fr", md: "1fr 1fr 1fr" }}
@@ -253,7 +249,6 @@ const SkillsSection = () => {
         ))}
       </Box>
 
-      {/* Skill Details Modal */}
       <Dialog
         open={!!openSkill}
         onClose={() => setOpenSkill(null)}

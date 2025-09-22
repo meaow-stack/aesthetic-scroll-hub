@@ -1,3 +1,4 @@
+"use client";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Download, Mail, ChevronDown, Sparkles } from "lucide-react";
@@ -18,7 +19,6 @@ const roles = [
 
 const HeroSection = () => {
   const scrollToSection = (sectionId: string) => {
-    // Wait briefly to ensure DOM is fully rendered
     setTimeout(() => {
       const element = document.getElementById(sectionId);
       if (element) {
@@ -26,10 +26,9 @@ const HeroSection = () => {
       } else {
         console.warn(`Element with ID "${sectionId}" not found. Ensure the target section has id="${sectionId}".`);
       }
-    }, 100); // 100ms delay to handle potential rendering delays
+    }, 100);
   };
 
-  // Quote Rotator
   const [currentQuote, setCurrentQuote] = useState(0);
   useEffect(() => {
     const interval = setInterval(() => {
@@ -38,7 +37,6 @@ const HeroSection = () => {
     return () => clearInterval(interval);
   }, []);
 
-  // Typewriter Role Effect
   const [currentRole, setCurrentRole] = useState(0);
   useEffect(() => {
     const interval = setInterval(() => {
@@ -49,27 +47,20 @@ const HeroSection = () => {
 
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Background Image */}
-      <div 
+      <div
         className="absolute inset-0 z-0 bg-cover bg-center bg-no-repeat"
         style={{ backgroundImage: `url(${heroBackground})` }}
       />
-      
-      {/* Dark Overlay */}
       <div className="absolute inset-0 z-10 bg-gradient-to-b from-black/80 via-gray-950/70 to-indigo-950/80" />
-      
-      {/* Glow */}
       <div className="absolute inset-0 z-20 bg-indigo-950/10 blur-3xl animate-pulse" />
 
-      {/* Content */}
       <div className="relative z-30 text-center px-6 max-w-4xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
         >
-          {/* Name */}
-          <motion.h1 
+          <motion.h1
             className="text-5xl md:text-7xl font-extrabold mb-4 bg-gradient-to-r from-indigo-400 to-purple-600 bg-clip-text text-transparent tracking-tight"
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
@@ -78,8 +69,7 @@ const HeroSection = () => {
             Sayantan Mukherjee
           </motion.h1>
 
-          {/* Tagline */}
-          <motion.div 
+          <motion.div
             className="flex items-center justify-center gap-2 text-lg md:text-xl text-indigo-300 mb-6 font-light"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -88,9 +78,8 @@ const HeroSection = () => {
             <Sparkles className="h-5 w-5 text-indigo-500 animate-pulse" />
             <span>Turning ideas into code & code into impact 🚀</span>
           </motion.div>
-          
-          {/* Dynamic Role */}
-          <motion.p 
+
+          <motion.p
             key={roles[currentRole]}
             className="text-xl md:text-2xl text-indigo-200 mb-6 font-medium"
             initial={{ opacity: 0, y: 30 }}
@@ -100,8 +89,7 @@ const HeroSection = () => {
             {roles[currentRole]}
           </motion.p>
 
-          {/* Rotating Quote */}
-          <motion.p 
+          <motion.p
             key={quotes[currentQuote]}
             className="italic text-lg md:text-xl text-indigo-400 mb-10"
             initial={{ opacity: 0 }}
@@ -110,27 +98,26 @@ const HeroSection = () => {
           >
             {quotes[currentQuote]}
           </motion.p>
-          
-          {/* Buttons */}
-          <motion.div 
+
+          <motion.div
             className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.7 }}
           >
             <a href="/resume.pdf" target="_blank" rel="noopener noreferrer">
-              <Button 
-                size="lg" 
+              <Button
+                size="lg"
                 className="px-8 py-6 text-lg font-semibold bg-gradient-to-r from-indigo-600 to-purple-800 hover:scale-105 hover:shadow-[0_0_15px_rgba(79,70,229,0.5)] transition-all duration-300 group rounded-2xl"
               >
                 <Download className="mr-2 h-5 w-5 group-hover:animate-bounce" />
                 View Resume
               </Button>
             </a>
-            
-            <Button 
-              variant="outline" 
-              size="lg" 
+
+            <Button
+              variant="outline"
+              size="lg"
               className="px-8 py-6 text-lg font-semibold border-indigo-600 text-indigo-400 hover:bg-indigo-600 hover:text-white hover:scale-105 transition-all duration-300 rounded-2xl"
               onClick={() => scrollToSection("contact")}
             >
@@ -141,8 +128,7 @@ const HeroSection = () => {
         </motion.div>
       </div>
 
-      {/* Scroll Indicator */}
-      <motion.div 
+      <motion.div
         className="absolute bottom-10 left-1/2 transform -translate-x-1/2 z-30 flex flex-col items-center"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
@@ -151,7 +137,7 @@ const HeroSection = () => {
         <div className="h-10 w-10 border-2 border-indigo-500 rounded-full flex items-center justify-center animate-pulse mb-2">
           <ChevronDown className="h-5 w-5 text-indigo-500 animate-bounce" />
         </div>
-        <button 
+        <button
           onClick={() => scrollToSection("about")}
           className="text-sm text-indigo-400 hover:text-indigo-200 transition-colors duration-300"
         >

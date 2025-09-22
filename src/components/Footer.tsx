@@ -1,7 +1,7 @@
 "use client";
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { Github, Linkedin, Twitter, Mail, Heart, Home, Coffee } from "lucide-react";
+import { Github, Linkedin, Twitter, Mail, Heart, Home } from "lucide-react";
 
 const Footer = () => {
   const [email, setEmail] = useState<string>("");
@@ -52,7 +52,7 @@ const Footer = () => {
   const navLinks = ["About", "Skills", "Projects", "Contact"];
 
   return (
-    <footer className="relative w-full py-8 px-6 border-t border-primary/20 bg-gradient-to-b from-background to-primary/5 flex items-center pb-[calc(3rem+env(safe-area-inset-bottom))]">
+    <footer className="relative w-full py-8 px-6 border-t border-t-primary/20 bg-gradient-to-b from-background to-primary/5 flex items-center pb-[calc(3rem+env(safe-area-inset-bottom))]">
       <div className="max-w-6xl mx-auto w-full">
         <motion.div
           initial={{ opacity: 0, y: 30 }}

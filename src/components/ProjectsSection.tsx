@@ -54,7 +54,6 @@ const ProjectsSection = () => {
   return (
     <section id="projects" className="py-20 px-6 bg-gradient-to-br from-black via-gray-950 to-indigo-950">
       <div className="max-w-6xl mx-auto">
-        {/* Heading */}
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -71,7 +70,6 @@ const ProjectsSection = () => {
           </p>
         </motion.div>
 
-        {/* Project Cards */}
         <div className="grid gap-12">
           {projects.map((project, index) => (
             <motion.div
@@ -89,7 +87,6 @@ const ProjectsSection = () => {
                     project.featured ? "lg:grid-cols-2" : "grid-cols-1"
                   } gap-0`}
                 >
-                  {/* Project Image */}
                   {project.image ? (
                     <div className="relative overflow-hidden">
                       <motion.img
@@ -106,7 +103,6 @@ const ProjectsSection = () => {
                     </div>
                   )}
 
-                  {/* Project Content */}
                   <CardContent className="p-8 flex flex-col justify-between">
                     <div>
                       <h3 className="text-2xl font-bold mb-4 text-indigo-200 group-hover:text-indigo-400 transition-colors duration-300">
@@ -115,8 +111,6 @@ const ProjectsSection = () => {
                       <p className="text-indigo-300 mb-6 leading-relaxed">
                         {project.description}
                       </p>
-
-                      {/* Technologies */}
                       <div className="flex flex-wrap gap-2 mb-6">
                         {project.technologies.map((tech) => (
                           <span
@@ -129,7 +123,6 @@ const ProjectsSection = () => {
                       </div>
                     </div>
 
-                    {/* Project Links */}
                     <div className="flex gap-4">
                       <Button
                         variant="outline"
@@ -169,7 +162,6 @@ const ProjectsSection = () => {
           ))}
         </div>
 
-        {/* View More */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}

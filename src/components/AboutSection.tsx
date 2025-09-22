@@ -60,7 +60,12 @@ const AboutSection = () => {
             left: `${p.x}%`,
           }}
           animate={{ y: [`${p.y}%`, `${p.y + 2}%`, `${p.y}%`] }}
-          transition={{ duration: p.duration, repeat: Infinity, delay: p.delay, ease: "easeInOut" }}
+          transition={{
+            duration: p.duration,
+            repeat: Infinity,
+            delay: p.delay,
+            ease: "easeInOut",
+          }}
         />
       ))}
 
@@ -68,7 +73,6 @@ const AboutSection = () => {
       <div className="absolute inset-0 -z-10 bg-indigo-950/10 blur-3xl animate-pulse" />
 
       <div className="max-w-6xl mx-auto">
-        {/* Heading */}
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -86,7 +90,6 @@ const AboutSection = () => {
         </motion.div>
 
         <div className="grid lg:grid-cols-2 gap-12 items-center">
-          {/* Profile Photo & Fun Fact */}
           <motion.div
             initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -95,7 +98,6 @@ const AboutSection = () => {
             className="relative flex flex-col items-center gap-6"
           >
             <div className="relative w-72 h-72 md:w-80 md:h-80">
-              {/* Glowing aura */}
               <div className="absolute inset-0 bg-gradient-to-r from-indigo-700 to-purple-950 rounded-full opacity-30 blur-3xl animate-pulse" />
               <motion.img
                 src={profilePhoto}
@@ -105,7 +107,6 @@ const AboutSection = () => {
                 transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
               />
             </div>
-            {/* Fun Fact Rotator */}
             <motion.p
               key={factIndex}
               initial={{ opacity: 0, y: 10 }}
@@ -117,7 +118,6 @@ const AboutSection = () => {
             </motion.p>
           </motion.div>
 
-          {/* Content */}
           <motion.div
             initial={{ opacity: 0, x: 50 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -125,7 +125,6 @@ const AboutSection = () => {
             viewport={{ once: true }}
             className="space-y-8"
           >
-            {/* My Story */}
             <motion.div
               whileHover={{ scale: 1.02, rotate: -1 }}
               transition={{ type: "spring", stiffness: 200 }}
@@ -146,7 +145,6 @@ const AboutSection = () => {
               </Card>
             </motion.div>
 
-            {/* What I Do + Skill Bars */}
             <motion.div
               whileHover={{ scale: 1.02, rotate: 1 }}
               transition={{ type: "spring", stiffness: 200 }}
@@ -162,7 +160,6 @@ const AboutSection = () => {
                     <li>Create user-friendly and scalable digital solutions</li>
                   </ul>
 
-                  {/* Skill Bars */}
                   <div className="space-y-4">
                     {skills.map((skill, i) => (
                       <div key={i}>
@@ -184,7 +181,6 @@ const AboutSection = () => {
               </Card>
             </motion.div>
 
-            {/* My Mission */}
             <motion.div
               whileHover={{ scale: 1.02, rotate: -1 }}
               transition={{ type: "spring", stiffness: 200 }}

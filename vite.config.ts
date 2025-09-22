@@ -17,7 +17,7 @@ export default defineConfig(({ mode }) => {
 
   return {
     server: {
-      host: "::",
+      host: "::", // Listen on all network interfaces (IPv6 and IPv4)
       port: 8080,
     },
     plugins,
@@ -27,15 +27,13 @@ export default defineConfig(({ mode }) => {
       },
     },
     build: {
-      chunkSizeWarningLimit: 2000, // Increase warning limit
-      minify: "esbuild",           // Fast minification
-      // Let Vite handle chunk splitting automatically
+      chunkSizeWarningLimit: 2000, // Increase warning limit to 2000 KB
+      minify: "esbuild",           // Use esbuild for faster minification
       rollupOptions: {
         output: {
-          // Optional: only split node_modules into vendor chunks
           manualChunks(id) {
             if (id.includes("node_modules")) {
-              return "vendor";
+              return "vendor"; // Split node_modules into a vendor chunk
             }
           },
         },
